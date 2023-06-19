@@ -16,23 +16,30 @@
     </div>
 
     <div class="box">
-        <% for(var i=0 ; i<Added.length ; i++){ %>
-            <div class="item">
-                <input type="checkbox">
-                <p>
-                    <%= Added[i] %>
-                </p>
+            
+            <% Added.forEach((addedItem)=>{ %>
+                <form action="/delete" method="post">
+                    <div class="item">
+                        
+                        <input type="checkbox" onChange="this.form.submit()" name="checkbox" value="<%= addedItem._id %>">
+                        <p>
+                            <%= addedItem.name %>
+                        </p>
+                        
+                    </div>
+                </form>
+                
+                <% }) %>
+           
 
-            </div>
-            <% } %>
-            <form class="item" action="/" method="post">
-                <input type="text" id="iname" name="iname" placeholder="New Item">
-                <button type="submit" name="button" value=<%= cDay %>>+</button>
-            </form>
+                <form class="item" action="/" method="post">
+                    <input type="text" id="iname" name="iname" placeholder="New Item">
+                    <button type="submit" name="button" value=<%=cDay %>>+</button>
+                </form>
     </div>
 
 
-  
+
 
 </body>
 
